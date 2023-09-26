@@ -4,7 +4,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/go-vgo/robotgo"
+	r "github.com/go-vgo/robotgo"
 )
 
 const (
@@ -18,19 +18,19 @@ const (
 )
 
 func main() {
-	robotgo.Move(X+RAD, Y)
+	r.Move(X+RAD, Y)
 	time.Sleep(time.Second * 1)
-	robotgo.Toggle("down")
-	robotgo.Toggle("up")
-	robotgo.Toggle("down")
+	r.Toggle("down")
+	r.Toggle("up")
+	r.Toggle("down")
 
 	for i := 0; i <= INC; i++ {
 		theta := -float64(i) / float64(INC) * 2.0000 * math.Pi
 		x := X + int(float64(RAD)*math.Cos(theta))
 		y := Y + int(float64(RAD)*math.Sin(theta))
-		robotgo.Move(x, y)
+		r.Move(x, y)
 		if x == 0 {
-			robotgo.Toggle("down")
+			r.Toggle("down")
 		}
 		time.Sleep(50 * time.Millisecond)
 	}
